@@ -1,0 +1,13 @@
+<div class="container">
+  <h2>Editar Jogo</h2>
+  <form *ngIf="jogo" (ngSubmit)="salvar()" #formJogo="ngForm">
+    <label>Nome:<input name="nome" [(ngModel)]="jogo.nome" required /></label>
+    <label>Tipo:<input name="tipo" [(ngModel)]="jogo.tipo" required /></label>
+    <label>Ano:<input name="ano" type="number" [(ngModel)]="jogo.ano" required min="1950" max="2100" /></label>
+    <div class="actions">
+      <button type="submit" [disabled]="!formJogo.form.valid">Salvar</button>
+      <button type="button" (click)="router.navigate(['/'])">Cancelar</button>
+    </div>
+  </form>
+  <div *ngIf="!jogo">Carregando...</div>
+</div>

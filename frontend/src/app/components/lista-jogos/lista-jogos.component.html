@@ -1,0 +1,39 @@
+<div class="container">
+  <h2>🎮 Catálogo de Jogos</h2>
+  <button class="add-btn" (click)="novoJogo()">
+    ✨ Novo Jogo
+  </button>
+  
+  <div class="table-container">
+    <table>
+      <thead>
+        <tr>
+          <th>🎯 Nome</th>
+          <th>🎲 Tipo</th>
+          <th>📅 Ano</th>
+          <th>⚡ Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let jogo of jogos; trackBy: trackByJogo">
+          <td class="game-name">{{ jogo.nome }}</td>
+          <td class="game-type">{{ jogo.tipo }}</td>
+          <td class="game-year">{{ jogo.ano }}</td>
+          <td class="actions-cell">
+            <button class="edit-btn" (click)="editarJogo(jogo.id)" title="Editar jogo">
+              ✏️ Editar
+            </button>
+            <button class="delete" (click)="excluirJogo(jogo.id)" title="Excluir jogo">
+              🗑️ Excluir
+            </button>
+          </td>
+        </tr>
+        <tr *ngIf="jogos.length === 0">
+          <td colspan="4" class="empty-state">
+            🎮 Nenhum jogo cadastrado ainda. Que tal adicionar o primeiro?
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
